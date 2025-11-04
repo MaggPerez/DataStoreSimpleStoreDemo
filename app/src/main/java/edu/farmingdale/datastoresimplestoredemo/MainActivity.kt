@@ -113,6 +113,9 @@ fun DataStoreDemo(modifier: Modifier) {
             label = { Text("Enter username")}
         )
 
+
+
+        // ToDo 3: Modify the App to save the username when the button is clicked
         //button to save username from textfield
         Button(
             onClick = {
@@ -127,6 +130,8 @@ fun DataStoreDemo(modifier: Modifier) {
         HorizontalDivider()
 
 
+
+
     }
 }
 
@@ -139,7 +144,7 @@ fun DataStorePreview() {
 
 
 
-// ToDo 3: Modify the App to save the username when the button is clicked
+
 // ToDo 4: Modify the App to display the values stored in the DataStore
 
 

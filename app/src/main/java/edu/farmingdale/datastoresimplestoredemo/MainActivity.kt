@@ -24,6 +24,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import edu.farmingdale.datastoresimplestoredemo.data.AppPreferences
@@ -77,6 +78,9 @@ fun DataStoreDemo(modifier: Modifier) {
     val appPrefs = store.appPreferenceFlow.collectAsState(AppPreferences())
     val coroutineScope = rememberCoroutineScope()
     var username by remember { mutableStateOf("") }
+    var displayValues by remember { mutableStateOf(false) }
+
+
     Column (modifier = Modifier.padding(50.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text("Values = ${appPrefs.value.userName}, " +
                 "${appPrefs.value.highScore}, ${appPrefs.value.darkMode}")
@@ -129,6 +133,22 @@ fun DataStoreDemo(modifier: Modifier) {
 
         HorizontalDivider()
 
+        // ToDo 4: Modify the App to display the values stored in the DataStore
+        Text(text = "Click to display from datastore")
+        if (displayValues){
+            Text(text = "From datastore: ", fontWeight = FontWeight.Bold)
+            Text(text = "Username: ${appPrefs.value.userName}")
+            Text(text = "High Score: ${appPrefs.value.highScore}")
+            Text(text = "Dark Mode: ${appPrefs.value.darkMode}")
+        }
+        Button(
+            onClick = {
+                displayValues = true
+            }
+        ) {
+            Text(text = "Display from datastore")
+        }
+
 
 
 
@@ -145,6 +165,6 @@ fun DataStorePreview() {
 
 
 
-// ToDo 4: Modify the App to display the values stored in the DataStore
+
 
 
